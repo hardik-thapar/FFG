@@ -1,0 +1,45 @@
+@media screen and (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+    }
+
+    .nav-icons {
+        margin-top: 1rem;
+    }
+
+    #hero h1 {
+        font-size: 3rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-content > div {
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+    }
+}

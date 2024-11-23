@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve a Table - Cafe Harvest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5efe6 0%, #ffffff 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .reservation-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(73, 44, 3, 0.1);
+            padding: 40px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(73, 44, 3, 0.1);
+        }
+
+        .form-header h1 {
+            font-family: 'Playfair Display', serif;
+            color: rgb(73, 44, 3);
+            font-size: 2.2rem;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: #2C3E50;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-group label i {
+            color: rgb(73, 44, 3);
+        }
+
+        .input-group input,
+        .input-group select {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            border-color: rgb(73, 44, 3);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(73, 44, 3, 0.1);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .submit-btn {
+            background: rgb(73, 44, 3);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(73, 44, 3, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .form-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/l.png" alt="Cafe Harvest Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="gifts.html">Gifts</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="cart.html" id="cart-icon">🛒<span id="cart-count">0</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="reservation-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1>Reserve Your Table</h1>
+            </div>
+
+            <form id="reservationForm">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label><i class="fas fa-user"></i> Name *</label>
+                        <input type="text" id="name" required placeholder="Enter your name">
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-phone"></i> Phone *</label>
+                        <input type="tel" id="phone" required placeholder="Enter phone number">
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-calendar"></i> Date *</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-clock"></i> Time *</label>
+                        <input type="time" id="time" required>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label><i class="fas fa-users"></i> Number of Guests *</label>
+                        <select id="guests" required>
+                            <option value="" disabled selected>Select number of guests</option>
+                            <option value="1-2">1-2 Guests</option>
+                            <option value="3-4">3-4 Guests</option>
+                            <option value="5-6">5-6 Guests</option>
+                            <option value="7+">7+ Guests</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn full-width">
+                        <i class="fas fa-check-circle"></i> Confirm Reservation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            alert(`Thank you ${name}, your reservation has been received. We will contact you shortly to confirm.`);
+            this.reset();
+        });
+    </script>
+</body>
+</html> 

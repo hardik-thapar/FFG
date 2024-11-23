@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Cafe Harvest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        /* @keyframes backgroundMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 60px 60px;
+            }
+        } */
+
+        #menu-hero {
+            position: relative;
+            isolation: isolate;
+        }
+
+        #menu-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(218,165,32,0.1) 0%, transparent 70%);
+            z-index: 1;
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+        .christmas-special{
+            background: linear-gradient(135deg, #c70012, #8b0000);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 2px solid rgba(10, 60, 199, 0.3);
+        }
+        .christmas-special:hover{
+            opacity: 0.9;
+            
+
+        }
+        
+
+
+        /* @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        } */
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/l.png" alt="Cafe Harvest Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="gifts.html">Gifts</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="explore.html">Explore</a></li>
+            </ul>
+            <div class="nav-icons">
+                
+                <a href="cart.html" id="cart-icon">🛒<span id="cart-count">0</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="menu-hero" style="
+            background: linear-gradient(135deg, #E6CCB2, #DEB887); 
+            height: 45vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            position: relative; 
+            overflow: hidden;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.1);
+        ">
+            <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%) -50px 0,
+                            linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%) -50px 0;
+                background-size: 100px 100px;
+                z-index: 1;
+            "></div>
+
+            <div style="
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+                border: 1px solid rgba(255, 215, 0, 0.2);
+                z-index: 1;
+            "></div>
+
+            <div style="
+                position: relative; 
+                z-index: 2; 
+                text-align: center; 
+                padding: 0 20px;
+                max-width: 1000px;
+                width: 100%;
+            ">
+                <h1 style="
+                    font-family: 'Playfair Display', serif; 
+                    color: #4A2F1B; 
+                    font-size: 4.5rem; 
+                    text-shadow: 2px 2px 4px rgba(0,0,0,0.05); 
+                    margin-bottom: 1rem;
+                    letter-spacing: 2px;
+                    font-weight: 700;
+                    line-height: 1.1;
+                ">
+                    Our Menu
+                </h1>
+                
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 1rem auto;
+                    gap: 10px;
+                ">
+                    <span style="width: 50px; height: 2px; background: rgba(74, 47, 27, 0.3);"></span>
+                    <i class="fas fa-circle" style="font-size: 6px; color: rgba(74, 47, 27, 0.3);"></i>
+                    <span style="width: 50px; height: 2px; background: rgba(74, 47, 27, 0.3);"></span>
+                </div>
+                
+                <p style="
+                    font-family: 'Cormorant Garamond', serif; 
+                    color: #4A2F1B; 
+                    font-size: 1.8rem; 
+                    font-style: italic; 
+                    opacity: 0.9;
+                    letter-spacing: 1px;
+                    margin: 0 auto;
+                    line-height: 1.4;
+                ">
+                    Savor the taste of perfection
+                </p>
+            </div>
+
+            <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+                background-size: 200% 200%;
+                animation: shimmer 3s infinite linear;
+                z-index: 1;
+            "></div>
+        </section>
+        <hr style="color:rgb(73, 44, 3)">
+        <section id="menu-filters">
+            <div class="filter-container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="coffee">Coffee</button>
+                    <button class="filter-btn" data-filter="tea">Tea</button>
+                    <button class="filter-btn" data-filter="cakes">Cakes</button>
+                    <button class="filter-btn" data-filter="savory">Savory</button>
+                    <button class="filter-btn christmas-special" data-filter="christmas">Christmas Specials</button>
+                </div>
+            </div>
+        </section>
+        <hr style="color:rgb(73, 44, 3)">
+        <section id="menu-items">
+            <!-- Menu items will be dynamically added here -->
+            <div class="menu-item cake">
+                <img src="images/chocolate-cake.jpg" alt="Chocolate Cake">
+                <div class="item-info">
+                    <h3>Chocolate Cake</h3>
+                    <p>Rich chocolate layers with chocolate ganache</p>
+                    <span class="price">₹220</span>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item cake">
+                <img src="images/red-velvet.jpg" alt="Red Velvet Cake">
+                <div class="item-info">
+                    <h3>Red Velvet Cake</h3>
+                    <p>Classic red velvet with cream cheese frosting</p>
+                    <span class="price">₹240</span>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item cake">
+                <img src="images/black-forest.jpg" alt="Black Forest Cake">
+                <div class="item-info">
+                    <h3>Black Forest Cake</h3>
+                    <p>Chocolate layers with cherries and whipped cream</p>
+                    <span class="price">₹230</span>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item cake">
+                <img src="images/butterscotch.jpg" alt="Butterscotch Cake">
+                <div class="item-info">
+                    <h3>Butterscotch Cake</h3>
+                    <p>Vanilla cake with butterscotch crunch and caramel</p>
+                    <span class="price">₹210</span>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item cake">
+                <img src="images/pineapple-cake.jpg" alt="Pineapple Cake">
+                <div class="item-info">
+                    <h3>Pineapple Cake</h3>
+                    <p>Light vanilla cake with fresh pineapple and cream</p>
+                    <span class="price">₹200</span>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item cake">
+                <img src="images/truffle-cake.jpg" alt="Chocolate Truffle Cake">
+                <div class="item-info">
+                    <h3>Chocolate Truffle Cake</h3>
+                    <p>Decadent chocolate truffle with dark chocolate shavings</p>
+                    <span class="price">₹250</span>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <hr style="color:rgb(73, 44, 3)">
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <p>Sector 7, Chandigarh</p>
+                    <p>Phone: +91 9876543210</p>
+                    <p>Email: info@cafeharvest.com</p>
+                </div>
+                <div class="social-media">
+                    <h3>Follow Us</h3>
+                    <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/home"><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="hours">
+                    <h3>Hours</h3>
+                    <p>Mon-Fri: 7am - 8pm</p>
+                    <p>Sat-Sun: 8am - 9pm</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Cafe Harvest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>My Profile</h2>
+            <p>Name: <span id="profile-name"></span></p>
+            <p>Email: <span id="profile-email"></span></p>
+            <p>Phone: <span id="profile-phone"></span></p>
+        </div>
+    </div>
+
+    <div id="cart-popup" class="cart-popup">
+        <span id="popup-message"></span>
+    </div>
+
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Cafe Harvest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .payment-title {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .payment-title h1 {
+            font-family: 'Playfair Display', serif;
+            color: #492C03;
+            font-size: 28px;
+            margin: 0 0 10px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: #492C03;
+            font-weight: 600;
+        }
+
+        .total-row {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #492C03;
+            font-size: 20px;
+        }
+
+        .pay-btn {
+            background: #492C03;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .pay-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(73, 44, 3, 0.2);
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-box">
+        <div class="payment-title">
+            <h1>Order Summary</h1>
+        </div>
+
+        <div class="detail-row">
+            <span class="detail-label">Name</span>
+            <span class="detail-value" id="customer-name"></span>
+        </div>
+
+        <div class="detail-row">
+            <span class="detail-label">Table No.</span>
+            <span class="detail-value" id="table-no"></span>
+        </div>
+
+        <div class="detail-row">
+            <span class="detail-label">Contact</span>
+            <span class="detail-value" id="contact-no"></span>
+        </div>
+
+        <div class="detail-row total-row">
+            <span class="detail-label">Total Amount</span>
+            <span class="detail-value" id="total-amount"></span>
+        </div>
+
+        <button id="pay-btn" class="pay-btn">
+            <i class="fas fa-lock"></i> Pay Securely
+        </button>
+
+        <div class="secure-badge">
+            <i class="fas fa-shield-alt"></i>
+            Secured by Razorpay
+        </div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        // Get cart details from localStorage
+        const orderDetails = JSON.parse(localStorage.getItem('pendingOrder'));
+        console.log('Order Details:', orderDetails); // For debugging
+
+        // Display details
+        document.getElementById('customer-name').textContent = orderDetails.name;
+        document.getElementById('table-no').textContent = orderDetails.table;
+        document.getElementById('contact-no').textContent = orderDetails.contact;
+        document.getElementById('total-amount').textContent = `₹${orderDetails.totalAmount}`;
+
+        // Razorpay Integration
+        document.getElementById('pay-btn').onclick = function(e) {
+            const options = {
+                key: "rzp_test_a4zcZABGsJEBrs",
+                amount: parseFloat(orderDetails.totalAmount) * 100,
+                currency: "INR",
+                name: "Cafe Harvest",
+                description: "Table Reservation and Food Order",
+                handler: function(response) {
+                    const paymentId = response.razorpay_payment_id;
+                    
+                    // Redirect to confirmation page with all details
+                    const redirectUrl = 'order-confirmation.html?' + 
+                        `name=${encodeURIComponent(orderDetails.name)}` + 
+                        `&table=${encodeURIComponent(orderDetails.table)}` + 
+                        `&contact=${encodeURIComponent(orderDetails.contact)}` + 
+                        `&amount=${encodeURIComponent(orderDetails.totalAmount)}` + 
+                        `&items=${encodeURIComponent(JSON.stringify(orderDetails.items))}` + 
+                        `&paymentId=${encodeURIComponent(paymentId)}` +
+                        `&orderDate=${encodeURIComponent(new Date().toLocaleString())}`;
+
+                    // Clear cart data
+                    localStorage.removeItem('pendingOrder');
+                    localStorage.removeItem('cart');
+
+                    // Redirect
+                    window.location.href = redirectUrl;
+                },
+                prefill: {
+                    name: orderDetails.name,
+                    contact: orderDetails.contact
+                },
+                theme: {
+                    color: "#492C03"
+                }
+            };
+
+            const rzp = new Razorpay(options);
+            rzp.open();
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html> 
